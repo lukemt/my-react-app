@@ -1,12 +1,14 @@
 import "./App.module.css";
 import Header from "../header/Header";
-import CardHermione from "../CardHermione/CardHermione";
+import Card from "../Card/Card";
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <CardHermione />
+      <Header title="Harry Potter App" />
+      <Card characterName="Hermione Granger" house="Gryffindor" imgUrl="" />
+      <Card characterName="Harry Potter" house="Gryffindor" imgUrl="" />
+      <Card characterName="Ron Weasley" house="Gryffindor" imgUrl="" />
     </div>
   );
 }
