@@ -1,8 +1,10 @@
 import "./App.module.css";
 import Header from "../header/Header";
 import Card from "../Card/Card";
+import data from "../../data.json";
 
 function App() {
+  console.log(data);
   return (
     <div className="App">
       <Header title="Harry Potter App" />
