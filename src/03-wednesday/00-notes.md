@@ -30,3 +30,13 @@
 2. Eine leiste mit Emoji-Buttons einbauen
    1. In den einzelen Buttons `onClick`-Funktionen implemientieren
    2. Die onClick-Funktionsaufrufe sollen die emoji-state-variable ändern
+
+## Footer Click State Implementation
+
+- User Story: As a user, when I click on a "House"-Button the button should change it's background-color, so that I can see I clicked on it. Other Buttons should change to the default background color.
+
+### Ideen
+
+- jeweils eine state-varable für ein haus
+- eine varible als string in der die hausfarbe steht
+- ein objekt mit vier properties für jedes haus, jeweils ein boolean
