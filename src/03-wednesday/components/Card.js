@@ -41,11 +41,40 @@ function Card({ characterName, house, imgUrl }) {
     setShowDetails(newShowDetails);
   };
 
+  const [emoji, setEmoji] = useState("");
+
+  // Option 1: Arrow function definition
+  // const handleEmojiButtonClick = (newEmoji) => {
+  //   setEmoji(newEmoji);
+  // };
+
+  // Option 2: simple function definition
+  // function handleEmojiButtonClick(newEmoji) {
+  //   setEmoji(newEmoji);
+  // }
+
+  // removable emoji
+  function handleEmojiButtonClick(newEmoji) {
+    if (emoji === newEmoji) {
+      setEmoji("");
+    } else {
+      setEmoji(newEmoji);
+    }
+  }
+
   return (
     <section className="Card">
+      <div className="CardEmojiBar">
+        <button onClick={() => handleEmojiButtonClick("🦩")}> 🦩 </button>
+        <button onClick={() => handleEmojiButtonClick("🦸‍♂️")}> 🦸‍♂️ </button>
+        <button onClick={() => handleEmojiButtonClick("🦸‍♀️")}> 🦸‍♀️ </button>
+        <button onClick={() => handleEmojiButtonClick("🦹‍♂️")}> 🦹‍♂️ </button>
+      </div>
       <img src={imgUrl} alt="" />
       <div>
-        {characterName === "Harry Potter" ? "⚡" : ""} {characterName}
+        {emoji}
+        {characterName === "Harry Potter" ? "⚡" : ""}
+        {characterName}
       </div>
       <div className={color}>House: {house}</div>
       <button onClick={() => handleDetailsButtonClick()}>Details</button>
