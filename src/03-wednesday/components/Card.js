@@ -65,7 +65,9 @@ function Card({ characterName, house, imgUrl }) {
 
   return (
     <section className="card">
-      <EmojiBar handleEmojiButtonClick={handleEmojiButtonClick} />
+      <EmojiBar
+        onEmojiButtonClick={(newEmoji) => handleEmojiButtonClick(newEmoji)}
+      />
 
       <h2>
         {emoji}

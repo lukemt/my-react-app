@@ -1,10 +1,10 @@
-function EmojiBar({ handleEmojiButtonClick }) {
+function EmojiBar({ onEmojiButtonClick }) {
   return (
     <div className="EmojiBar">
-      <button onClick={() => handleEmojiButtonClick("🦩")}> 🦩 </button>
-      <button onClick={() => handleEmojiButtonClick("🦸‍♂️")}> 🦸‍♂️ </button>
-      <button onClick={() => handleEmojiButtonClick("🦸‍♀️")}> 🦸‍♀️ </button>
-      <button onClick={() => handleEmojiButtonClick("🦹‍♂️")}> 🦹‍♂️ </button>
+      <button onClick={() => onEmojiButtonClick("🦩")}> 🦩 </button>
+      <button onClick={() => onEmojiButtonClick("🦸‍♂️")}> 🦸‍♂️ </button>
+      <button onClick={() => onEmojiButtonClick("🦸‍♀️")}> 🦸‍♀️ </button>
+      <button onClick={() => onEmojiButtonClick("🦹‍♂️")}> 🦹‍♂️ </button>
     </div>
   );
 }
