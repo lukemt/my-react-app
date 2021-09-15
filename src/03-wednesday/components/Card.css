@@ -1,9 +1,9 @@
-.Card {
+.card {
   border: 5px solid #aaa;
   margin: 15px;
   padding: 15px;
 }
 
-.red {
+.card__house--red {
   color: red;
 }
