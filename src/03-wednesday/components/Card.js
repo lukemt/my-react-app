@@ -5,21 +5,21 @@ import EmojiBar from "./EmojiBar";
 function tellColorName(house) {
   let color;
   if (house === "Gryffindor") {
-    color = "red";
+    color = "card__house--red";
   } else if (house === "Hufflepuff") {
-    color = "yellow";
+    color = "card__house--yellow";
   } else if (house === "Ravenclaw") {
-    color = "blue";
+    color = "card__house--blue";
   } else if (house === "Slytherin") {
-    color = "green";
+    color = "card__house--green";
   } else {
-    color = "white";
+    color = "card__house--white";
   }
   return color;
 }
 
 function Card({ characterName, house, imgUrl }) {
-  const color = tellColorName(house);
+  const colorClassName = tellColorName(house);
 
   // const showDetails = false;
   const [showDetails, setShowDetails] = useState(false);
@@ -64,7 +64,7 @@ function Card({ characterName, house, imgUrl }) {
   }
 
   return (
-    <section className="Card">
+    <section className="card">
       <EmojiBar handleEmojiButtonClick={handleEmojiButtonClick} />
 
       <h2>
@@ -73,7 +73,7 @@ function Card({ characterName, house, imgUrl }) {
         {characterName}
       </h2>
       <img src={imgUrl} alt="" />
-      <div className={color}>House: {house}</div>
+      <div className={colorClassName}>House: {house}</div>
       <button onClick={() => handleDetailsButtonClick()}>Details</button>
       {showDetails ? <div>DETAILS</div> : <div></div>}
     </section>
