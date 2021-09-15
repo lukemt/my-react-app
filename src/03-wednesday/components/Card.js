@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Card.css";
+import EmojiBar from "./EmojiBar";
 
 function tellColorName(house) {
   let color;
@@ -64,18 +65,14 @@ function Card({ characterName, house, imgUrl }) {
 
   return (
     <section className="Card">
-      <div className="CardEmojiBar">
-        <button onClick={() => handleEmojiButtonClick("🦩")}> 🦩 </button>
-        <button onClick={() => handleEmojiButtonClick("🦸‍♂️")}> 🦸‍♂️ </button>
-        <button onClick={() => handleEmojiButtonClick("🦸‍♀️")}> 🦸‍♀️ </button>
-        <button onClick={() => handleEmojiButtonClick("🦹‍♂️")}> 🦹‍♂️ </button>
-      </div>
-      <img src={imgUrl} alt="" />
-      <div>
+      <EmojiBar handleEmojiButtonClick={handleEmojiButtonClick} />
+
+      <h2>
         {emoji}
         {characterName === "Harry Potter" ? "⚡" : ""}
         {characterName}
-      </div>
+      </h2>
+      <img src={imgUrl} alt="" />
       <div className={color}>House: {house}</div>
       <button onClick={() => handleDetailsButtonClick()}>Details</button>
       {showDetails ? <div>DETAILS</div> : <div></div>}
