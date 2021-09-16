@@ -11,10 +11,17 @@ footer {
   width: 100%;
   bottom: 0;
   left: 0;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .header > img {
   display: block;
   height: 70px;
   margin: 0 auto;
+}
+
+footer > button {
+  width: 50px;
+  height: 50px;
 }

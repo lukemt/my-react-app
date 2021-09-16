@@ -27,16 +27,22 @@ import { useState } from "react";
 ]
 */
 function App({ data }) {
-  const [activeHouse, setActiveHouse] = useState("");
+  const [activeHouse, setActiveHouse] = useState("All");
 
   function handleHouseButtonClick(house) {
     setActiveHouse(house);
   }
 
+  const filteredData = data.filter((character) => {
+    return character.house === activeHouse;
+  });
+
+  const shownData = activeHouse === "All" ? data : filteredData;
+
   return (
     <div className="app">
       <Header title="Harry Potter App" />
-      {data.map((character) => (
+      {shownData.map((character) => (
         <Card
           characterName={character.name}
           house={character.house}

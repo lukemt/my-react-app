@@ -4,7 +4,6 @@ import "./Footer.css";
 function Footer({ activeHouse, onHouseButtonClick }) {
   return (
     <footer>
-      <h2>{activeHouse}</h2>
       <button
         className={activeHouse === "Gryffindor" ? "footer__button--active" : ""}
         onClick={() => onHouseButtonClick("Gryffindor")}
@@ -29,6 +28,10 @@ function Footer({ activeHouse, onHouseButtonClick }) {
       >
         S
       </button>
+      <button
+        className={activeHouse === "" ? "footer__button--active" : ""}
+        onClick={() => onHouseButtonClick("")}
+      ></button>
     </footer>
   );
 }
