@@ -1,33 +1,31 @@
 import { useState } from "react";
 import "./Footer.css";
 
-function Footer() {
-  const [activeHouse, setActiveHouse] = useState("");
-
+function Footer({ activeHouse, onHouseButtonClick }) {
   return (
     <footer>
       <h2>{activeHouse}</h2>
       <button
         className={activeHouse === "Gryffindor" ? "footer__button--active" : ""}
-        onClick={() => setActiveHouse("Gryffindor")}
+        onClick={() => onHouseButtonClick("Gryffindor")}
       >
         G
       </button>
       <button
         className={activeHouse === "Hufflepuff" ? "footer__button--active" : ""}
-        onClick={() => setActiveHouse("Hufflepuff")}
+        onClick={() => onHouseButtonClick("Hufflepuff")}
       >
         H
       </button>
       <button
         className={activeHouse === "Ravenclaw" ? "footer__button--active" : ""}
-        onClick={() => setActiveHouse("Ravenclaw")}
+        onClick={() => onHouseButtonClick("Ravenclaw")}
       >
         R
       </button>
       <button
         className={activeHouse === "Slytherin" ? "footer__button--active" : ""}
-        onClick={() => setActiveHouse("Slytherin")}
+        onClick={() => onHouseButtonClick("Slytherin")}
       >
         S
       </button>

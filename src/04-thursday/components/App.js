@@ -3,6 +3,7 @@ import Header from "./Header";
 import Card from "./Card";
 import data from "../data.json";
 import Footer from "./Footer";
+import { useState } from "react";
 
 /*
 [
@@ -27,6 +28,12 @@ import Footer from "./Footer";
 ]
 */
 function App() {
+  const [activeHouse, setActiveHouse] = useState("");
+
+  function handleHouseButtonClick(house) {
+    setActiveHouse(house);
+  }
+
   return (
     <div className="app">
       <Header title="Harry Potter App" />
@@ -38,7 +45,10 @@ function App() {
           key={character.name}
         />
       ))}
-      <Footer />
+      <Footer
+        activeHouse={activeHouse}
+        onHouseButtonClick={handleHouseButtonClick}
+      />
     </div>
   );
 }
