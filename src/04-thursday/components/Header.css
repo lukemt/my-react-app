@@ -1,7 +1,4 @@
-.footer__button--active {
-  background-color: cyan;
-}
-footer {
+.header {
   padding: 30px;
   text-align: center;
 
@@ -9,7 +6,7 @@ footer {
   box-shadow: 0px 0px 20px #dedede;
   position: sticky;
   width: 100%;
-  bottom: 0;
+  top: 0;
   left: 0;
 }
 

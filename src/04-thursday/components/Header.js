@@ -1,15 +1,10 @@
-import styles from "./Header.module.css";
+import "./Header.css";
+import logo from "./HeaderLogo.svg";
 
-function Header(props) {
-  // props
-  /*
-  {
-    title: "Harry Potter App";
-  }
-  */
+function Header() {
   return (
-    <header>
-      <div className={styles.App}>{props.title}</div>
+    <header className="header">
+      <img src={logo} />
     </header>
   );
 }

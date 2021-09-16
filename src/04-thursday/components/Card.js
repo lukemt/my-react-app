@@ -26,7 +26,6 @@ function Card({ characterName, house, imgUrl }) {
 
   //
   const handleDetailsButtonClick = () => {
-    alert("button was clicked!!!");
     // Option 1:
     // setShowDetails(!showDetails);
 
@@ -65,19 +64,22 @@ function Card({ characterName, house, imgUrl }) {
 
   return (
     <section className="card">
+      <img src={imgUrl} alt="" />
+      <div className={"card__content"}>
+        <h2>
+          {emoji}
+          {characterName === "Harry Potter" ? "⚡" : ""} {characterName}
+        </h2>
+        <div className={colorClassName}>House: {house}</div>
+        <button onClick={() => handleDetailsButtonClick()}>
+          Show {showDetails ? "Less" : "More"}
+        </button>
+        {showDetails ? <div>DETAILS</div> : <div></div>}
+      </div>
       <EmojiBar
+        emojiState={emoji}
         onEmojiButtonClick={(newEmoji) => handleEmojiButtonClick(newEmoji)}
       />
-
-      <h2>
-        {emoji}
-        {characterName === "Harry Potter" ? "⚡" : ""}
-        {characterName}
-      </h2>
-      <img src={imgUrl} alt="" />
-      <div className={colorClassName}>House: {house}</div>
-      <button onClick={() => handleDetailsButtonClick()}>Details</button>
-      {showDetails ? <div>DETAILS</div> : <div></div>}
     </section>
   );
 }
