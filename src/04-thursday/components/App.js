@@ -24,7 +24,7 @@ import { useState } from "react";
     "alive": true,
     "image": "http://hp-api.herokuapp.com/images/harry.jpg"
   },
-]
+] 
 */
 function App({ data }) {
   const [activeHouse, setActiveHouse] = useState("All");
@@ -39,17 +39,57 @@ function App({ data }) {
 
   const shownData = activeHouse === "All" ? data : filteredData;
 
+  // emoji
+  /*
+  initialEmojiState Example data:
+  [
+    {
+      name: "Harry Potter",
+      emoji: ""
+    },
+    {
+      name: "Ron Weasley",
+      emoji: ""
+    },
+    ...
+  ] 
+  */
+  const initialEmojiState = data.map((character) => ({
+    name: character.name,
+    emoji: "",
+  }));
+  const [emojiData, setEmojiData] = useState(initialEmojiState);
+
+  // removable emoji
+  function handleEmojiButtonClick(newEmoji, characterName) {
+    const changedEmojiData = emojiData.map((item) => {
+      if (item.name === characterName) {
+        return {
+          name: characterName,
+          emoji: newEmoji,
+        };
+      } else {
+        return item;
+      }
+    });
+    setEmojiData(changedEmojiData);
+  }
+
   return (
     <div className="app">
       <Header title="Harry Potter App" />
-      {shownData.map((character) => (
-        <Card
-          characterName={character.name}
-          house={character.house}
-          imgUrl={character.image}
-          key={character.name}
-        />
-      ))}
+      <main>
+        {shownData.map((character) => (
+          <Card
+            characterName={character.name}
+            house={character.house}
+            imgUrl={character.image}
+            key={character.name}
+            onEmojiButtonClick={handleEmojiButtonClick}
+            emoji={emojiData.find((item) => item.name === character.name).emoji}
+          />
+        ))}
+      </main>
       <Footer
         activeHouse={activeHouse}
         onHouseButtonClick={handleHouseButtonClick}

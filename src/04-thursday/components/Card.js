@@ -18,7 +18,7 @@ function tellColorName(house) {
   return color;
 }
 
-function Card({ characterName, house, imgUrl }) {
+function Card({ characterName, house, imgUrl, onEmojiButtonClick, emoji }) {
   const colorClassName = tellColorName(house);
 
   // const showDetails = false;
@@ -41,27 +41,6 @@ function Card({ characterName, house, imgUrl }) {
     setShowDetails(newShowDetails);
   };
 
-  const [emoji, setEmoji] = useState("");
-
-  // Option 1: Arrow function definition
-  // const handleEmojiButtonClick = (newEmoji) => {
-  //   setEmoji(newEmoji);
-  // };
-
-  // Option 2: simple function definition
-  // function handleEmojiButtonClick(newEmoji) {
-  //   setEmoji(newEmoji);
-  // }
-
-  // removable emoji
-  function handleEmojiButtonClick(newEmoji) {
-    if (emoji === newEmoji) {
-      setEmoji("");
-    } else {
-      setEmoji(newEmoji);
-    }
-  }
-
   return (
     <section className="card">
       <img src={imgUrl} alt="" />
@@ -78,7 +57,8 @@ function Card({ characterName, house, imgUrl }) {
       </div>
       <EmojiBar
         emojiState={emoji}
-        onEmojiButtonClick={(newEmoji) => handleEmojiButtonClick(newEmoji)}
+        onEmojiButtonClick={onEmojiButtonClick}
+        characterName={characterName}
       />
     </section>
   );
