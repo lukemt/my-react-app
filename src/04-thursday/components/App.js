@@ -1,7 +1,6 @@
 import "./App.css";
 import Header from "./Header";
 import Card from "./Card";
-import data from "../data.json";
 import Footer from "./Footer";
 import { useState } from "react";
 
@@ -27,7 +26,7 @@ import { useState } from "react";
   },
 ]
 */
-function App() {
+function App({ data }) {
   const [activeHouse, setActiveHouse] = useState("");
 
   function handleHouseButtonClick(house) {
