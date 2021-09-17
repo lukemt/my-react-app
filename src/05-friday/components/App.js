@@ -27,10 +27,31 @@ import { useState } from "react";
 ] 
 */
 function App({ data }) {
-  const [activeHouse, setActiveHouse] = useState("All");
+  // Option 1
+  // const [activeHouse, setActiveHouse] = useState(
+  //   localStorage.getItem("activeHouseLocalStorage")
+  //     ? JSON.parse(localStorage.getItem("activeHouseLocalStorage"))
+  //     : "All"
+  // );
+  // Option 2
+  const [activeHouse, setActiveHouse] = useState(() => {
+    if (localStorage.getItem("activeHouseLocalStorage")) {
+      return JSON.parse(localStorage.getItem("activeHouseLocalStorage"));
+    } else {
+      return "All";
+    }
+  });
 
-  function handleHouseButtonClick(house) {
-    setActiveHouse(house);
+  function handleHouseButtonClick(newActiveHouse) {
+    setActiveHouse(newActiveHouse);
+
+    // In Local-Storage speichern
+    // Option 1
+    // localStorage.setItem("activeHouseLocalStorage", JSON.stringify(newActiveHouse));
+
+    // Option 2
+    const stringifiedValue = JSON.stringify(newActiveHouse);
+    localStorage.setItem("activeHouseLocalStorage", stringifiedValue);
   }
 
   const filteredData = data.filter((character) => {
