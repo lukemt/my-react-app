@@ -23,3 +23,7 @@
   object-fit: cover;
   border-radius: 10px;
 }
+
+.card--favorite {
+  background-color: #fffbe1;
+}

@@ -102,6 +102,51 @@ emojiData Example data:
     localStorage.setItem("emojiDataLocalStorage", JSON.stringify(newEmojiData));
   }
 
+  // Favorite
+  const [favorites, setFavorite] = useState(() => {
+    // Set default value
+    if (localStorage.getItem("favoritesLocalStorage")) {
+      return JSON.parse(localStorage.getItem("favoritesLocalStorage"));
+    } else {
+      return [];
+    }
+  });
+  function handleFavoriteButtonClick(characterName) {
+    const isFavorite = favorites.includes(characterName);
+
+    // Option 1
+    let newFavorites;
+    if (isFavorite) {
+      // Remove from favorites
+      newFavorites = favorites.filter((item) => {
+        if (item === characterName) {
+          return false;
+        } else {
+          return true;
+        }
+      });
+    } else {
+      // Add to favorites
+      newFavorites = favorites.concat(characterName);
+    }
+
+    // Option 2
+    // const newFavorites = isFavorite
+    //   ? favorites.filter((item) => {
+    //       if (item === characterName) {
+    //         return false;
+    //       } else {
+    //         return true;
+    //       }
+    //     })
+    //   : favorites.concat(characterName);
+
+    // Option X: Other solutions are possible
+
+    setFavorite(newFavorites);
+    localStorage.setItem("favoritesLocalStorage", JSON.stringify(newFavorites));
+  }
+
   return (
     <div className="app">
       <Header title="Harry Potter App" />
@@ -114,6 +159,8 @@ emojiData Example data:
             key={character.name}
             onEmojiButtonClick={handleEmojiButtonClick}
             emoji={getEmoji(character.name, emojiData)}
+            onFavoriteButtonClick={handleFavoriteButtonClick}
+            isFavorite={favorites.indexOf(character.name) > -1}
           />
         ))}
       </main>

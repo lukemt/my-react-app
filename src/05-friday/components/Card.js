@@ -18,7 +18,15 @@ function tellColorName(house) {
   return color;
 }
 
-function Card({ characterName, house, imgUrl, onEmojiButtonClick, emoji }) {
+function Card({
+  characterName,
+  house,
+  imgUrl,
+  emoji,
+  isFavorite,
+  onEmojiButtonClick,
+  onFavoriteButtonClick,
+}) {
   const colorClassName = tellColorName(house);
 
   // const showDetails = false;
@@ -42,9 +50,12 @@ function Card({ characterName, house, imgUrl, onEmojiButtonClick, emoji }) {
   };
 
   return (
-    <section className="card">
+    <section className={"card" + (isFavorite ? " card--favorite" : "")}>
       <img src={imgUrl} alt="" />
       <div className={"card__content"}>
+        <button onClick={() => onFavoriteButtonClick(characterName)}>
+          Like
+        </button>
         <h2>
           {emoji}
           {characterName === "Harry Potter" ? "⚡" : ""} {characterName}
