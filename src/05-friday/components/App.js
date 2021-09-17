@@ -3,6 +3,7 @@ import Header from "./Header";
 import Card from "./Card";
 import Footer from "./Footer";
 import { useState } from "react";
+import { getEmoji } from "./helpers";
 
 /*
 [
@@ -62,38 +63,35 @@ function App({ data }) {
 
   // emoji
   /*
-  initialEmojiState Example data:
+emojiData Example data:
   [
     {
       name: "Harry Potter",
-      emoji: ""
+      emoji: "🦩"
     },
     {
       name: "Ron Weasley",
-      emoji: ""
+      emoji: "🐹"
     },
     ...
   ] 
   */
-  const initialEmojiState = data.map((character) => ({
-    name: character.name,
-    emoji: "",
-  }));
-  const [emojiData, setEmojiData] = useState(initialEmojiState);
+  const [emojiData, setEmojiData] = useState([]);
 
   // removable emoji
   function handleEmojiButtonClick(newEmoji, characterName) {
-    const changedEmojiData = emojiData.map((item) => {
+    const filteredEmojiData = emojiData.filter((item) => {
       if (item.name === characterName) {
-        return {
-          name: characterName,
-          emoji: newEmoji !== item.emoji ? newEmoji : "",
-        };
+        return false;
       } else {
-        return item;
+        return true;
       }
     });
-    setEmojiData(changedEmojiData);
+    const newEmojiData = [
+      ...filteredEmojiData,
+      { name: characterName, emoji: newEmoji },
+    ];
+    setEmojiData(newEmojiData);
   }
 
   return (
@@ -107,7 +105,7 @@ function App({ data }) {
             imgUrl={character.image}
             key={character.name}
             onEmojiButtonClick={handleEmojiButtonClick}
-            emoji={emojiData.find((item) => item.name === character.name).emoji}
+            emoji={getEmoji(character.name, emojiData)}
           />
         ))}
       </main>
