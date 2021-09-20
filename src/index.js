@@ -4,10 +4,11 @@ import App from "./05-friday/components/App";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import data from "./data.json";
+import CreateCharacterForm from "./07-monday/components/Form";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App data={data} />
+    <CreateCharacterForm />
   </React.StrictMode>,
   document.getElementById("root")
 );
