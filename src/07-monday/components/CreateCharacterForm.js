@@ -1,3 +1,5 @@
+import "./CreateCharacterForm.css";
+
 function CreateCharacterForm() {
   return (
     <form onSubmit={(event) => handleSubmit(event)}>

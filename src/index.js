@@ -1,14 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./05-friday/components/App";
+import App from "./07-monday/components/App";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import data from "./data.json";
-import CreateCharacterForm from "./07-monday/components/Form";
 
 ReactDOM.render(
   <React.StrictMode>
-    <CreateCharacterForm />
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );
