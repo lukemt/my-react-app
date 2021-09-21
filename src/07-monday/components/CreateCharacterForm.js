@@ -1,9 +1,10 @@
+import styled from "styled-components";
 import "./CreateCharacterForm.css";
 
 function CreateCharacterForm({ onCreateCharacter }) {
   return (
     <form onSubmit={(event) => handleSubmit(event)}>
-      <label>
+      <Label>
         Name of Character:
         <input
           type="text"
@@ -11,12 +12,12 @@ function CreateCharacterForm({ onCreateCharacter }) {
           required
           autoComplete="Off"
         ></input>
-      </label>
+      </Label>
       <label>
         House:
         <input type="text" name="house" required></input>
       </label>
-      <button>create</button>
+      <Button>create</Button>
     </form>
   );
 
@@ -53,4 +54,15 @@ function CreateCharacterForm({ onCreateCharacter }) {
     characterName.focus();
   }
 }
+
+const Button = styled.button`
+  &:hover {
+    color: red;
+  }
+`;
+
+const Label = styled.label`
+  color: green;
+`;
+
 export default CreateCharacterForm;
