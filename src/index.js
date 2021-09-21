@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./07-monday/components/App";
+import App from "./08-tuesday/characterApp/App";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import data from "./data.json";
