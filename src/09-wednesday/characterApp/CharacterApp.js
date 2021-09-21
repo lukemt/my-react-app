@@ -1,6 +1,8 @@
 import { useState } from "react";
 import CreateCharacterForm from "./CreateCharacterForm";
 import styled from "styled-components";
+import { Route, Switch } from "react-router";
+import { BrowserRouter as Router } from "react-router-dom";
 
 const INITIAL_DATA = [
   {
@@ -17,14 +19,22 @@ function CharacterApp() {
   const [data, setData] = useState(INITIAL_DATA);
 
   return (
-    <StyledMain className="app">
-      <CreateCharacterForm onCreateCharacter={handleCreateCharacter} />
-      {data.map((character) => (
-        <StyledAppCardDiv key={character.name}>
-          {character.name} from {character.house}
-        </StyledAppCardDiv>
-      ))}
-    </StyledMain>
+    <Router>
+      <StyledMain className="app">
+        <Switch>
+          <Route path="/new">
+            <CreateCharacterForm onCreateCharacter={handleCreateCharacter} />
+          </Route>
+          <Route path="/characters">
+            {data.map((character) => (
+              <StyledAppCardDiv key={character.name}>
+                {character.name} from {character.house}
+              </StyledAppCardDiv>
+            ))}
+          </Route>
+        </Switch>
+      </StyledMain>
+    </Router>
   );
 
   function handleCreateCharacter({ name, house }) {
