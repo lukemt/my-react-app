@@ -1,19 +1,20 @@
 import { useState } from "react";
+import styled from "styled-components";
 import "./Card.css";
 import EmojiBar from "./EmojiBar";
 
-function tellColorName(house) {
+function getHouseColor(house) {
   let color;
   if (house === "Gryffindor") {
-    color = "card__house--red";
+    color = "red";
   } else if (house === "Hufflepuff") {
-    color = "card__house--yellow";
+    color = "yellow";
   } else if (house === "Ravenclaw") {
-    color = "card__house--blue";
+    color = "blue";
   } else if (house === "Slytherin") {
-    color = "card__house--green";
+    color = "green";
   } else {
-    color = "card__house--white";
+    color = "white";
   }
   return color;
 }
@@ -27,8 +28,6 @@ function Card({
   onEmojiButtonClick,
   onFavoriteButtonClick,
 }) {
-  const colorClassName = tellColorName(house);
-
   // const showDetails = false;
   const [showDetails, setShowDetails] = useState(false);
 
@@ -60,7 +59,9 @@ function Card({
           {emoji}
           {characterName === "Harry Potter" ? "⚡" : ""} {characterName}
         </h2>
-        <div className={colorClassName}>House: {house}</div>
+        <StyledHouseDiv color={getHouseColor(house)}>
+          House: {house}
+        </StyledHouseDiv>
         <button onClick={() => handleDetailsButtonClick()}>
           Show {showDetails ? "Less" : "More"}
         </button>
@@ -74,5 +75,9 @@ function Card({
     </section>
   );
 }
+
+const StyledHouseDiv = styled.div`
+  color: ${({ color }) => color};
+`;
 
 export default Card;
