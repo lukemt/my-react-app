@@ -1,0 +1,33 @@
+.footer__button--active {
+  background-color: rgb(197, 240, 255);
+}
+footer {
+  padding: 30px;
+  text-align: center;
+
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 20px #dedede;
+  position: fixed;
+  width: 100%;
+  max-width: 600px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.header > img {
+  display: block;
+  height: 70px;
+  margin: 0 auto;
+}
+
+footer > button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
