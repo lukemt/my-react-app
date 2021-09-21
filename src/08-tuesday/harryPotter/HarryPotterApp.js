@@ -1,4 +1,4 @@
-import "./App.css";
+import "./HarryPotterApp.css";
 import Header from "./Header";
 import Card from "./Card";
 import Footer from "./Footer";
@@ -27,7 +27,7 @@ import { getEmoji } from "./helpers";
   },
 ] 
 */
-function App({ data }) {
+function HarryPotterApp({ data }) {
   // Option 1
   // const [activeHouse, setActiveHouse] = useState(
   //   localStorage.getItem("activeHouseLocalStorage")
@@ -172,4 +172,4 @@ emojiData Example data:
   );
 }
 
-export default App;
+export default HarryPotterApp;

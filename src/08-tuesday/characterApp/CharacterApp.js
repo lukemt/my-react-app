@@ -9,7 +9,7 @@ const INITIAL_DATA = [
   },
 ];
 
-function App() {
+function CharacterApp() {
   const [data, setData] = useState(INITIAL_DATA);
 
   return (
@@ -58,4 +58,4 @@ const StyledMain = styled.main`
   margin: 0 auto;
 `;
 
-export default App;
+export default CharacterApp;

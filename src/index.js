@@ -1,14 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./08-tuesday/characterApp/App";
+import App from "./08-tuesday/App";
 import reportWebVitals from "./reportWebVitals";
-import data from "./data.json";
+import harryPotterData from "./data.json";
 import GlobalStyles from "./08-tuesday/characterApp/GlobalStyles";
 
 ReactDOM.render(
   <React.StrictMode>
     <GlobalStyles />
-    <App />
+    <App harryPotterData={harryPotterData} />
   </React.StrictMode>,
   document.getElementById("root")
 );
