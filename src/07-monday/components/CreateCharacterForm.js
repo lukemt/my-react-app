@@ -1,10 +1,9 @@
-import styled from "styled-components";
-import "./CreateCharacterForm.css";
+import styled, { css } from "styled-components";
 
 function CreateCharacterForm({ onCreateCharacter }) {
   return (
-    <form onSubmit={(event) => handleSubmit(event)}>
-      <Label>
+    <StyledForm onSubmit={(event) => handleSubmit(event)}>
+      <StyledLabel>
         Name of Character:
         <input
           type="text"
@@ -12,13 +11,13 @@ function CreateCharacterForm({ onCreateCharacter }) {
           required
           autoComplete="Off"
         ></input>
-      </Label>
+      </StyledLabel>
       <label>
         House:
         <input type="text" name="house" required></input>
       </label>
-      <Button>create</Button>
-    </form>
+      <StyledButton primary={true}>create</StyledButton>
+    </StyledForm>
   );
 
   function handleSubmit(eventInside) {
@@ -55,14 +54,34 @@ function CreateCharacterForm({ onCreateCharacter }) {
   }
 }
 
-const Button = styled.button`
+const StyledButton = styled.button`
   &:hover {
     color: red;
   }
+
+  ${(props) =>
+    props.primary &&
+    css`
+      background-color: antiquewhite;
+    `}
+
+  padding: ${(props) => (props.primary ? "15px" : "5px")};
+  /* with prop destructuring: */
+  margin: ${({ primary }) => (primary ? "15px" : "5px")};
 `;
 
-const Label = styled.label`
+const StyledLabel = styled.label`
   color: green;
+`;
+
+const StyledForm = styled.form`
+  border: 5px solid rgb(255, 236, 131);
+  margin: 15px;
+  padding: 15px;
+  border-radius: 13px;
+
+  box-shadow: 0px 0px 20px #dedede;
+  display: flex;
 `;
 
 export default CreateCharacterForm;

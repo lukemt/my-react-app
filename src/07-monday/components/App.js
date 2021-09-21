@@ -1,6 +1,6 @@
-import "./App.css";
 import { useState } from "react";
 import CreateCharacterForm from "./CreateCharacterForm";
+import styled from "styled-components";
 
 const INITIAL_DATA = [
   {
@@ -13,14 +13,14 @@ function App() {
   const [data, setData] = useState(INITIAL_DATA);
 
   return (
-    <div>
+    <StyledMain className="app">
       <CreateCharacterForm onCreateCharacter={handleCreateCharacter} />
       {data.map((character) => (
-        <div key={character.name}>
+        <StyledAppCardDiv key={character.name}>
           {character.name} from {character.house}
-        </div>
+        </StyledAppCardDiv>
       ))}
-    </div>
+    </StyledMain>
   );
 
   function handleCreateCharacter({ name, house }) {
@@ -42,5 +42,20 @@ function App() {
     setData(newData);
   }
 }
+
+const StyledAppCardDiv = styled.div`
+  border: 0px solid #aaa;
+  margin: 15px;
+  padding: 15px;
+  border-radius: 13px;
+
+  box-shadow: 0px 0px 20px #dedede;
+  display: flex;
+`;
+
+const StyledMain = styled.main`
+  max-width: 600px;
+  margin: 0 auto;
+`;
 
 export default App;
