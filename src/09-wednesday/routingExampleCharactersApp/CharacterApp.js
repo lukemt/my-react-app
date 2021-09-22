@@ -1,8 +1,7 @@
 import { useState } from "react";
 import CreateCharacterForm from "./CreateCharacterForm";
 import styled from "styled-components";
-import { Route, Switch } from "react-router";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 const INITIAL_DATA = [
   {

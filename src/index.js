@@ -3,14 +3,14 @@ import ReactDOM from "react-dom";
 import reportWebVitals from "./reportWebVitals";
 import harryPotterData from "./data.json";
 import GlobalStyles from "./GlobalStyles";
-import App from "./09-wednesday/App";
+import Apps from "./09-wednesday/Apps";
 import { BrowserRouter as Router } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <GlobalStyles />
-      <App harryPotterData={harryPotterData} />
+      <Apps harryPotterData={harryPotterData} />
     </Router>
   </React.StrictMode>,
   document.getElementById("root")
