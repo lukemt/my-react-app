@@ -10,6 +10,7 @@ export default function PersonRoute({ data }) {
     (person) => person.name.toLowerCase() === name.toLowerCase()
   );
 
+  // display a card with information about the character if the character is found
   return personInfo ? (
     <Card name={personInfo.name} house={personInfo.house} />
   ) : (

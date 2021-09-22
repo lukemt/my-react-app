@@ -1,9 +1,12 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export default function Card({ name, house }) {
   return (
     <StyledAppCardDiv>
-      {name} from {house}
+      <Link to={`/characters/person/${name}`}>
+        {name} from {house}
+      </Link>
     </StyledAppCardDiv>
   );
 }
