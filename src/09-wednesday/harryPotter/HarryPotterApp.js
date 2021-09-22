@@ -2,7 +2,7 @@ import "./HarryPotterApp.css";
 import Header from "./Header";
 import Card from "./Card";
 import Footer from "./Footer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getEmoji } from "./helpers";
 
 /*
@@ -27,7 +27,24 @@ import { getEmoji } from "./helpers";
   },
 ] 
 */
-function HarryPotterApp({ data }) {
+function HarryPotterApp() {
+  const [data, setData] = useState([]);
+
+  // nur einmal ausführen:
+  useEffect(() => {
+    fetch("http://hp-api.herokuapp.com/api/characters")
+      .then((response) => response.json())
+      .then((dataFromServer) => {
+        console.log(dataFromServer);
+        setData(dataFromServer);
+      });
+
+    // cleanup function
+    return () => {
+      console.log("cleanup triggered");
+    };
+  }, []);
+
   // Option 1
   // const [activeHouse, setActiveHouse] = useState(
   //   localStorage.getItem("activeHouseLocalStorage")
@@ -148,9 +165,16 @@ emojiData Example data:
   }
 
   return (
-    <div className="app">
+    <div
+      className="app"
+      // style={{
+      //   backgroundColor: data.length === 0 ? "red" : "",
+      //   height: "100vh",
+      // }}
+    >
       <Header title="Harry Potter App" />
       <main>
+        {data.length === 0 ? <div>loading...</div> : null}
         {shownData.map((character) => (
           <Card
             characterName={character.name}
