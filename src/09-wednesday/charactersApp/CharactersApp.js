@@ -1,14 +1,18 @@
 import { useState } from "react";
 import CreateCharacterForm from "./CreateCharacterForm";
 import styled from "styled-components";
-import { Route, Switch } from "react-router";
+import { Link, Route } from "react-router-dom";
+import Card from "./Card";
+import PersonRoute from "./PersonRoute";
 
 const INITIAL_DATA = [
   {
+    id: 1,
     name: "Harry",
     house: "Gryffindor",
   },
   {
+    id: 2,
     name: "Hermione",
     house: "Gryffindor",
   },
@@ -22,13 +26,20 @@ function CharacterApp() {
       <Route exact path={["/characters/new", "/characters"]}>
         <CreateCharacterForm onCreateCharacter={handleCreateCharacter} />
       </Route>
+
       <Route exact path={["/characters/list", "/characters"]}>
         {data.map((character) => (
-          <StyledAppCardDiv key={character.name}>
-            {character.name} from {character.house}
-          </StyledAppCardDiv>
+          <Card key={character.name} {...character} />
         ))}
       </Route>
+
+      <Route exact path={["/characters/person/:name"]}>
+        <PersonRoute data={data} />
+      </Route>
+
+      <StyledLink to="/characters/">Home</StyledLink>
+      <StyledLink to="/characters/new">New</StyledLink>
+      <StyledLink to="/characters/list">List</StyledLink>
     </StyledMain>
   );
 
@@ -52,19 +63,21 @@ function CharacterApp() {
   }
 }
 
-const StyledAppCardDiv = styled.div`
-  border: 0px solid #aaa;
-  margin: 15px;
-  padding: 15px;
-  border-radius: 13px;
-
-  box-shadow: 0px 0px 20px #dedede;
-  display: flex;
-`;
-
 const StyledMain = styled.main`
   max-width: 600px;
   margin: 0 auto;
 `;
 
+const StyledLink = styled(Link)`
+  display: inline-block;
+  background-color: lightgray;
+  padding: 5px;
+  text-decoration: none;
+  border-radius: 3px;
+  color: black;
+  margin: 3px;
+  &:hover {
+    background-color: red;
+  }
+`;
 export default CharacterApp;
