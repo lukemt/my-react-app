@@ -29,7 +29,11 @@ function CharacterApp() {
 
       <Route exact path={["/characters/list", "/characters"]}>
         {data.map((character) => (
-          <Card key={character.name} {...character} />
+          <Card
+            key={character.name}
+            name={character.name}
+            house={character.house}
+          />
         ))}
       </Route>
 
