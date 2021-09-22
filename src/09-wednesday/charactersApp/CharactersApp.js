@@ -37,7 +37,7 @@ function CharacterApp() {
         ))}
       </Route>
 
-      <Route exact path={["/characters/person/:name"]}>
+      <Route exact path={["/characters/person/:nameInUrl"]}>
         <PersonRoute data={data} />
       </Route>
 

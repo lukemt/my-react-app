@@ -3,17 +3,26 @@ import Card from "./Card";
 
 export default function PersonRoute({ data }) {
   // get name from the url
-  const { name } = useParams();
+  const { nameInUrl } = useParams();
+
+  // same:
+  /* 
+  {
+    name: "hermioney"
+  }
+  const params = useParams();
+  const name = params.name
+  */
 
   // search data array for the data of the person
   const personInfo = data.find(
-    (person) => person.name.toLowerCase() === name.toLowerCase()
+    (person) => person.name.toLowerCase() === nameInUrl.toLowerCase()
   );
 
   // display a card with information about the character if the character is found
   return personInfo ? (
     <Card name={personInfo.name} house={personInfo.house} />
   ) : (
-    <div>PERSON NOT FOUND: {name}</div>
+    <div>PERSON NOT FOUND: {nameInUrl}</div>
   );
 }
