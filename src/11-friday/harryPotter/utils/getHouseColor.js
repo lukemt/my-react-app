@@ -1,4 +1,4 @@
-export function getHouseColor(house) {
+export default function getHouseColor(house) {
   let color;
   if (house === "Gryffindor") {
     color = "red";

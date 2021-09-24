@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled, { css } from "styled-components";
 import EmojiBar from "./EmojiBar";
-import { getHouseColor } from "./utils/getHouseColor";
+import getHouseColor from "./utils/getHouseColor";
 
 function Card({
   characterName,

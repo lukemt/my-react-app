@@ -2,8 +2,11 @@ import Header from "./Header";
 import Card from "./Card";
 import Footer from "./Footer";
 import { useEffect, useState } from "react";
-import { getEmoji } from "./helpers";
+import getEmoji from "./utils/getEmojji";
 import styled from "styled-components";
+import { useActiveHouse } from "./hooks/useActiveHouse";
+import useEmoji from "./hooks/useEmoji";
+import useFavorite from "./hooks/useFavorite";
 
 /*
 [
@@ -45,126 +48,15 @@ function HarryPotterApp() {
     };
   }, []);
 
-  // Option 1
-  // const [activeHouse, setActiveHouse] = useState(
-  //   localStorage.getItem("activeHouseLocalStorage")
-  //     ? JSON.parse(localStorage.getItem("activeHouseLocalStorage"))
-  //     : "All"
-  // );
-  // Option 2
-  const [activeHouse, setActiveHouse] = useState(() => {
-    if (localStorage.getItem("activeHouseLocalStorage")) {
-      return JSON.parse(localStorage.getItem("activeHouseLocalStorage"));
-    } else {
-      return "All";
-    }
-  });
+  const { activeHouse, handleHouseButtonClick } = useActiveHouse();
+  const { emojiData, handleEmojiButtonClick } = useEmoji();
+  const { favorites, handleFavoriteButtonClick } = useFavorite();
 
-  function handleHouseButtonClick(newActiveHouse) {
-    if (newActiveHouse === activeHouse) {
-      newActiveHouse = "All";
-    }
-    setActiveHouse(newActiveHouse);
-
-    // In Local-Storage speichern
-    // Option 1
-    // localStorage.setItem("activeHouseLocalStorage", JSON.stringify(newActiveHouse));
-
-    // Option 2
-    const stringifiedValue = JSON.stringify(newActiveHouse);
-    localStorage.setItem("activeHouseLocalStorage", stringifiedValue);
-  }
-
-  const filteredData = data.filter((character) => {
-    return character.house === activeHouse;
-  });
-
-  const shownData = activeHouse === "All" ? data : filteredData;
-
-  // emoji
-  /*
-emojiData Example data:
-  [
-    {
-      name: "Harry Potter",
-      emoji: "🦩"
-    },
-    {
-      name: "Ron Weasley",
-      emoji: "🐹"
-    },
-    ...
-  ] 
-  */
-  const [emojiData, setEmojiData] = useState(() => {
-    if (localStorage.getItem("emojiDataLocalStorage")) {
-      return JSON.parse(localStorage.getItem("emojiDataLocalStorage"));
-    } else {
-      return [];
-    }
-  });
-
-  // removable emoji
-  function handleEmojiButtonClick(newEmoji, characterName) {
-    const oldEmoji = getEmoji(characterName, emojiData);
-    const filteredEmojiData = emojiData.filter((item) => {
-      if (item.name === characterName) {
-        return false;
-      } else {
-        return true;
-      }
-    });
-    const newEmojiData =
-      oldEmoji === newEmoji
-        ? filteredEmojiData
-        : [...filteredEmojiData, { name: characterName, emoji: newEmoji }];
-    setEmojiData(newEmojiData);
-    localStorage.setItem("emojiDataLocalStorage", JSON.stringify(newEmojiData));
-  }
-
-  // Favorite
-  const [favorites, setFavorite] = useState(() => {
-    // Set default value
-    if (localStorage.getItem("favoritesLocalStorage")) {
-      return JSON.parse(localStorage.getItem("favoritesLocalStorage"));
-    } else {
-      return [];
-    }
-  });
-  function handleFavoriteButtonClick(characterName) {
-    const isFavorite = favorites.includes(characterName);
-
-    // Option 1
-    let newFavorites;
-    if (isFavorite) {
-      // Remove from favorites
-      newFavorites = favorites.filter((item) => {
-        if (item === characterName) {
-          return false;
-        } else {
-          return true;
-        }
-      });
-    } else {
-      // Add to favorites
-      newFavorites = favorites.concat(characterName);
-    }
-
-    // Option 2
-    // const newFavorites = isFavorite
-    //   ? favorites.filter((item) => {
-    //       if (item === characterName) {
-    //         return false;
-    //       } else {
-    //         return true;
-    //       }
-    //     })
-    //   : favorites.concat(characterName);
-
-    // Option X: Other solutions are possible
-
-    setFavorite(newFavorites);
-    localStorage.setItem("favoritesLocalStorage", JSON.stringify(newFavorites));
+  let shownData;
+  if (activeHouse === "all") {
+    shownData = data;
+  } else {
+    shownData = data.filter((character) => character.house === activeHouse);
   }
 
   return (

@@ -1,4 +1,4 @@
-import { getHouseColor } from "./getHouseColor";
+import getHouseColor from "./getHouseColor";
 
 // unit tests for getHouseColor:
 describe("getHouseColor", () => {
