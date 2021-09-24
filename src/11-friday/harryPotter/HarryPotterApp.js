@@ -1,9 +1,9 @@
-import "./HarryPotterApp.css";
 import Header from "./Header";
 import Card from "./Card";
 import Footer from "./Footer";
 import { useEffect, useState } from "react";
 import { getEmoji } from "./helpers";
+import styled from "styled-components";
 
 /*
 [
@@ -61,6 +61,9 @@ function HarryPotterApp() {
   });
 
   function handleHouseButtonClick(newActiveHouse) {
+    if (newActiveHouse === activeHouse) {
+      newActiveHouse = "All";
+    }
     setActiveHouse(newActiveHouse);
 
     // In Local-Storage speichern
@@ -165,15 +168,9 @@ emojiData Example data:
   }
 
   return (
-    <div
-      className="app"
-      // style={{
-      //   backgroundColor: data.length === 0 ? "red" : "",
-      //   height: "100vh",
-      // }}
-    >
+    <StyledContainerDiv>
       <Header title="Harry Potter App" />
-      <main>
+      <StyledMain>
         {data.length === 0 ? <div>loading...</div> : null}
         {shownData.map((character) => (
           <Card
@@ -187,13 +184,22 @@ emojiData Example data:
             isFavorite={favorites.indexOf(character.name) > -1}
           />
         ))}
-      </main>
+      </StyledMain>
       <Footer
         activeHouse={activeHouse}
         onHouseButtonClick={handleHouseButtonClick}
       />
-    </div>
+    </StyledContainerDiv>
   );
 }
+
+const StyledContainerDiv = styled.div`
+  max-width: 600px;
+  margin: 0 auto;
+`;
+
+const StyledMain = styled.main`
+  margin-bottom: 150px;
+`;
 
 export default HarryPotterApp;
