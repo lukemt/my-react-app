@@ -2,22 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import "./Card.css";
 import EmojiBar from "./EmojiBar";
-
-function getHouseColor(house) {
-  let color;
-  if (house === "Gryffindor") {
-    color = "red";
-  } else if (house === "Hufflepuff") {
-    color = "yellow";
-  } else if (house === "Ravenclaw") {
-    color = "blue";
-  } else if (house === "Slytherin") {
-    color = "green";
-  } else {
-    color = "white";
-  }
-  return color;
-}
+import { getHouseColor } from "./utils/getHouseColor";
 
 function Card({
   characterName,
