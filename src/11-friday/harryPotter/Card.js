@@ -35,8 +35,8 @@ function Card({
         {showDetails ? <div>DETAILS</div> : <div></div>}
       </StyledContentDiv>
       <EmojiBar
-        emojiState={emoji}
-        onEmojiButtonClick={onEmojiButtonClick}
+        activeEmoji={emoji}
+        onEmojiButtonClick={(emoji) => onEmojiButtonClick(emoji, characterName)}
         characterName={characterName}
       />
     </StyledSection>

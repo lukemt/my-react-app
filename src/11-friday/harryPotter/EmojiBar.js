@@ -1,16 +1,16 @@
 import styled, { css } from "styled-components";
 
-function EmojiBar({ emojiState, onEmojiButtonClick, characterName }) {
+function EmojiBar({ activeEmoji, onEmojiButtonClick }) {
   const emojis = ["🦩", "🐵", "🧳", "🐹"];
   return (
     <div>
-      {emojis.map((currentEmoji) => (
+      {emojis.map((emoji) => (
         <StyledButton
-          key={currentEmoji}
-          onClick={() => onEmojiButtonClick(currentEmoji, characterName)}
-          isActive={emojiState === currentEmoji}
+          key={emoji}
+          onClick={() => onEmojiButtonClick(emoji)}
+          isActive={activeEmoji === emoji}
         >
-          {currentEmoji}
+          {emoji}
         </StyledButton>
       ))}
     </div>

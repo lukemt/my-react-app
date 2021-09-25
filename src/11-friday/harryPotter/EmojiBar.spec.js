@@ -84,11 +84,9 @@ describe("EmojiBar", () => {
 
     const buttons = screen.getAllByRole("button");
 
-    const firstButton = buttons[0];
-
     expect(mockOnEmojiButtonClick).not.toHaveBeenCalled();
 
-    userEvent.click(firstButton);
+    userEvent.click(buttons[0]);
 
     expect(mockOnEmojiButtonClick).toHaveBeenCalled();
   });
