@@ -4,31 +4,31 @@ function Footer({ activeHouse, onHouseButtonClick }) {
   return (
     <StyledFooter>
       <StyledButton
-        className={activeHouse === "Gryffindor" ? "footer__button--active" : ""}
+        isActive={activeHouse === "Gryffindor"}
         onClick={() => onHouseButtonClick("Gryffindor")}
       >
         G
       </StyledButton>
       <StyledButton
-        className={activeHouse === "Hufflepuff" ? "footer__button--active" : ""}
+        isActive={activeHouse === "Hufflepuff"}
         onClick={() => onHouseButtonClick("Hufflepuff")}
       >
         H
       </StyledButton>
       <StyledButton
-        className={activeHouse === "Ravenclaw" ? "footer__button--active" : ""}
+        isActive={activeHouse === "Ravenclaw"}
         onClick={() => onHouseButtonClick("Ravenclaw")}
       >
         R
       </StyledButton>
       <StyledButton
-        className={activeHouse === "Slytherin" ? "footer__button--active" : ""}
+        isActive={activeHouse === "Slytherin"}
         onClick={() => onHouseButtonClick("Slytherin")}
       >
         S
       </StyledButton>
       <StyledButton
-        className={activeHouse === "" ? "footer__button--active" : ""}
+        isActive={activeHouse === ""}
         onClick={() => onHouseButtonClick("")}
       ></StyledButton>
     </StyledFooter>
@@ -58,6 +58,8 @@ const StyledButton = styled.button`
   border-radius: 50%;
   border: none;
   cursor: pointer;
+  background-color: ${({ isActive }) =>
+    isActive ? "rgb(197, 240, 255)" : "rgb(220, 220, 220)"};
 `;
 
 export default Footer;
