@@ -9,10 +9,12 @@ import useFavorite from "./hooks/useFavorite";
 import useData from "./hooks/useData";
 
 function HarryPotterApp() {
+  // custom hooks (see: https://reactjs.org/docs/hooks-custom.html):
   const { activeHouse, handleHouseButtonClick } = useActiveHouse();
   const { emojiData, handleEmojiButtonClick } = useEmoji();
   const { favorites, handleFavoriteButtonClick } = useFavorite();
 
+  // fetch data from API:
   const { data } = useData();
 
   let shownData;
