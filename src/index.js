@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import reportWebVitals from "./reportWebVitals";
 import harryPotterData from "./data.json";
 import GlobalStyles from "./GlobalStyles";
-import Apps from "./11-friday/Apps";
+import Apps from "./12-monday/Apps";
 import { BrowserRouter as Router } from "react-router-dom";
 
 ReactDOM.render(
